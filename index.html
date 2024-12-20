@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meow - Campus Cats</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 左侧导航栏 -->
+  <nav id="sidebar">
+    <ul>
+      <li data-section="1">Video</li>
+      <li data-section="2">Daily life</li>
+      <li data-section="3">Who we are?</li>
+    </ul>
+  </nav>
+
+  <!-- Section 1: 头部区域 -->
+  <section id="section1">
+    <h1>Meow</h1>
+    <p>Their footprints connect with the warmth of the campus.</p>
+    <div class="videos">
+      <iframe src="https://www.youtube.com/embed/uMVcBybpYKM?si=Vn3xfl3aZgX4SnJO" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <pre>
+      Meow!, was a short rough film on the campus cats in NYUAD. 
+      When tasked with the challenging task of 
+      creating a short film in just the time span of 30-minutes.</pre>
+  </section>
+
+  <!-- Section 2: 关于校园猫咪 -->
+  <section id="section2">
+    <h2>The daily life of cats</h2>
+    <div class="carousel">
+      <img src="cat1.png" alt="校园猫咪 1">
+      <img src="cat2.png" alt="校园猫咪 2" class="hidden">
+      <img src="cat3.jpg" alt="校园猫咪 3" class="hidden">
+
+      <div class="buttons">
+        <button id="prev">&lt;</button>
+        <button id="next">&gt;</button>
+      </div>
+    </div>
+    <p><br/>Cats pop up anywhere in NYUAD.</p>
+  </section>
+
+  <!-- Section 3: 互动区域 -->
+  <section id="section3">
+    <h2>Who are we?</h2>
+    <p>Click on profile picture to know us.</p>
+    <div id="avatars">
+      <div class="avatar" onclick="showName('Oleksandr Anyshchenko')">
+        <img src="aleks.png" alt="Avatar of Alice">
+      </div>
+      <div class="avatar" onclick="showName('Sabrina Song')">
+        <img src="sabrina.png" alt="Avatar of Bob">
+      </div>
+    </div>
+    <div class="names">
+      <p id="name1" class="name"> </p>
+      <p id="name2" class="name"> </p>
+    </div>
+  </section>
+
+  </section>
+
+  
+
+  <script>
+    // 左侧导航栏点击跳转
+    const navLinks = document.querySelectorAll("#sidebar li");
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        const section = document.querySelector(`#section${link.dataset.section}`);
+        section.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+        // 左侧导航栏点击变色
+    const navLink = document.querySelectorAll("#sidebar li");
+    navLink.forEach(link => {
+      link.addEventListener("click", () => {
+        // 清除其他按钮的颜色
+        navLink.forEach(nav => nav.style.backgroundColor = "");
+        // 设置当前按钮颜色
+        link.style.backgroundColor = getRandomColor();
+      });
+    });
+
+    // 随机颜色生成函数
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+
+    // 图片轮播功能
+    const images = document.querySelectorAll('.carousel img');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    let currentIndex = 0;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('hidden', i !== index);
+      });
+    }
+
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    });
+
+    showImage(currentIndex);
+
+    // 显示头像名称
+    function showName(name) {
+      alert(`你点击了: ${name}`);
+    }
+
+    // 鼠标跟随方块
+    const box = document.getElementById('box');
+    document.addEventListener('mousemove', (event) => {
+      box.style.left = `${event.clientX}px`;
+      box.style.top = `${event.clientY}px`;
+    });
+
+    // 滚动变色功能
+    const sidebar = document.getElementById('sidebar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        sidebar.style.background = 'darkblue';
+      } else {
+        sidebar.style.background = 'white';
+      }
+    });
+  </script>
+</body>
+</html>

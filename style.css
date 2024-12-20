@@ -1,0 +1,184 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column; /* 纵向排列 */
+  background-color: #c0a3ff;
+  margin-left: 220px; /* 留出左侧导航栏的位置 */
+}
+
+/* 左侧导航栏样式 */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 垂直居中 */
+  gap: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease; /* 添加背景色变化的过渡效果 */
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar li {
+  cursor: pointer;
+  padding: 20px; /* 增大按钮尺寸 */
+  text-align: center;
+  color:#770075;
+  background: #f3f3f3;
+  border-radius: 5px;
+  font-size: 18px; /* 增大字体 */
+  
+  transition: background 0.3s;
+}
+
+#sidebar li:hover {
+  background: #ffb6c1;
+}
+
+section {
+  padding: 40px;
+  min-height: 10vh;
+  width: 100%;
+}
+
+h1, h2 {
+  color: #770075;
+  margin-bottom: 20px;
+  /* text-align: center; */
+  font-size: 60px;
+}
+
+p {
+  color: #472f83;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+/* 图片轮播样式 */
+.carousel {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+.carousel img.hidden {
+  display: none;
+}
+
+.carousel .buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 幕后花絮视频 */
+.videos iframe {
+  width: 80%;
+  height: 600px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+/* 互动区域样式 */
+#avatars {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.names {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.name {
+  font-size: 18px;
+  color: #654321;
+  text-align: center;
+}
+/* 修改图片轮播样式，改为正方形 */
+.carousel {
+  position: relative;
+  width: 400px; /* 设置宽度为400px */
+  height: 400px; /* 设置高度与宽度相同，形成正方形 */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持图像比例，填充框 */
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+.carousel img.hidden {
+  display: none;
+}
+
+pre {
+  font-size: 20px;
+}
